@@ -22,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -32,14 +33,19 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import id.haqiqi_studio.kamussasak.Anim.AnimationClasses;
 import id.haqiqi_studio.kamussasak.Model.DataModel;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ArrayList<DataModel> dataModels;
+    AnimationClasses anim;
     ListView list;
     ImageView imageView;
     DBHelper mydb;
@@ -59,6 +65,11 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.indo_sasak);
         setSupportActionBar(toolbar);
+
+        AdView adView = (AdView) findViewById(R.id.adView1);
+        AdRequest adRequest = new AdRequest.Builder()
+                .setRequestAgent("android_studio:ad_template").build();
+        adView.loadAd(adRequest);
 
         init();
         setVisiblityList();
@@ -155,18 +166,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    void setVisiblityList() {
-        if (txtSearch.getText().toString().matches("")) {
-            clear.setVisibility(View.INVISIBLE);
-            main.setVisibility(View.VISIBLE);
-            list.setVisibility(View.INVISIBLE);
-        } else {
-            clear.setVisibility(View.VISIBLE);
-            main.setVisibility(View.INVISIBLE);
-            list.setVisibility(View.VISIBLE);
-        }
-    }
-
     //region Show Data
     void showData() {
         list.setAdapter(mydb.getAllWords(getApplicationContext()));
@@ -188,6 +187,7 @@ public class MainActivity extends AppCompatActivity
     }
     //endregion
 
+    //region Filter Data
     void filter() {
         if (txtSearch.getHint().toString().matches(getString(R.string.indo))) {
             list.setAdapter(mydb.filterDataIndoSasak(txtSearch.getText().toString(), getApplicationContext(), txtNotFound));
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity
                     Bundle dataBundle = new Bundle();
                     dataBundle.putInt("id", id_To_Search);
 
-                    //Intent intent = new Intent(getApplicationContext(), DisplayContact.class);
+                    //Intent intent = new Intent(getApplicationContext(), *.class);
 
                     //intent.putExtras(dataBundle);
                     //startActivity(intent);
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity
                     Bundle dataBundle = new Bundle();
                     dataBundle.putInt("id", id_To_Search);
 
-                    //Intent intent = new Intent(getApplicationContext(), DisplayContact.class);
+                    //Intent intent = new Intent(getApplicationContext(), *.class);
 
                     //intent.putExtras(dataBundle);
                     //startActivity(intent);
@@ -225,6 +225,21 @@ public class MainActivity extends AppCompatActivity
             });
         }
     }
+    //endregion
+
+    //region Methods
+    void setVisiblityList() {
+        if (txtSearch.getText().toString().matches("")) {
+            clear.setVisibility(View.INVISIBLE);
+            main.setVisibility(View.VISIBLE);
+            list.setVisibility(View.INVISIBLE);
+        } else {
+            clear.setVisibility(View.VISIBLE);
+            main.setVisibility(View.INVISIBLE);
+            list.setVisibility(View.VISIBLE);
+        }
+    }
+    //endregion
 
     @Override
     public void onBackPressed() {
@@ -240,6 +255,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        ImageView img = (ImageView) menu.findItem(R.id.action_convert).getActionView();
         return true;
     }
 
@@ -254,6 +270,8 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_convert) {
             if (txt.matches(getString(R.string.indo))) {
+                anim = new AnimationClasses();
+                anim.setAnimationHyperToObject(txtSearch, getApplicationContext());
                 txtSearch.setHint(getString(R.string.sasak));
                 toolbar.setTitle(getString(R.string.sasak_indo));
             } else {
@@ -301,14 +319,5 @@ public class MainActivity extends AppCompatActivity
         return super.onKeyDown(keycode, event);
     }
 
-    void Shape() {
-        RoundRectShape roundRectShape = new RoundRectShape(new float[]{
-                10, 10, 10, 10,
-                10, 10, 10, 10}, null, null);
-        ShapeDrawable shapeDrawable = new ShapeDrawable(roundRectShape);
-        shapeDrawable.getPaint().setColor(Color.parseColor("#FFFFFF"));
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setBackground(shapeDrawable);
-// or you can use myImageView.setImageDrawable(shapeDrawable);
-    }
+
 }

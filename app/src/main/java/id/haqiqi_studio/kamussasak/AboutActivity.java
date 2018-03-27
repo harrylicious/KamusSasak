@@ -10,17 +10,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     LinearLayout main;
     DrawerLayout drawer;
     NavigationView navigationView;
     FloatingActionButton fab;
+    TextView tentang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +34,19 @@ public class AboutActivity extends AppCompatActivity implements NavigationView.O
         init();
 
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               share();
             }
         });
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+        drawer.addDrawerListener(toggle
+        );
         toggle.syncState();
 
 
@@ -53,7 +57,18 @@ public class AboutActivity extends AppCompatActivity implements NavigationView.O
     void init() {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        tentang = findViewById(R.id.txtAbout);
     }
+
+    //region Sharing
+    void share() {
+        Intent i = new Intent();
+        i.setAction(Intent.ACTION_SEND);
+        i.putExtra(Intent.EXTRA_TEXT, tentang.getText().toString() + "\n\n dan Yuks buruan download Kamus Sasak disini: " + "https://play.google.com/store/apps/details?id=haqiqi_studio.kancantastreamingapp");
+        i.setType("text/plain");
+        startActivity(Intent.createChooser(i, "Bagikan Ke:"));
+    }
+    //endregion
 
 
     @Override

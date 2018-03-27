@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.media.tv.TvContract;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Connection;
@@ -102,7 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Integer deleteWord(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("contacts",
+        return db.delete(TABLE_NAME,
                 "id = ? ",
                 new String[]{Integer.toString(id)});
     }
@@ -123,6 +124,24 @@ public class DBHelper extends SQLiteOpenHelper {
         CustomAdapter adapter= new CustomAdapter(dataModels, context);
 
       return adapter;
+    }
+
+    public CustomAdapter getAllWordsForList(Context context, TextView v) {
+        v.setTextColor(v.getResources().getColor(R.color.black));
+        ArrayList<DataModel> dataModels = new ArrayList<>();
+
+        db = this.getReadableDatabase();
+        Cursor cur = db.rawQuery("select * from " + TABLE_NAME + "", null);
+        cur.moveToFirst();
+
+        while (cur.isAfterLast() == false) {
+            dataModels.add(new DataModel(cur.getString(cur.getColumnIndex(WORD_COLUMN_WORD)), cur.getString(cur.getColumnIndex(WORD_COLUMN_MEANING)), cur.getString(cur.getColumnIndex(WORD_COLUMN_FORM))));
+            cur.moveToNext();
+        }
+        cur.close();
+        CustomAdapter adapter= new CustomAdapter(dataModels, context);
+
+        return adapter;
     }
 
 

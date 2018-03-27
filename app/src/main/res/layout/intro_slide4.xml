@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCF3E8"
+    tools:context=".IntroAppActivity">
+
+    <ImageView
+        android:id="@+id/img4"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/koneksi"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:id="@+id/slide_title4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SELESAIKAN MASALAH"
+        android:textColor="@color/primary_dark"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@id/img4"
+        android:layout_marginTop="2dp"
+        />
+
+    <TextView
+        android:id="@+id/slide_desc4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Semuanya dan sekarang juga"
+        android:textColor="@color/primary"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_below="@id/slide_title4"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        />
+
+    <TextView
+        android:id="@+id/txt_dengan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dengan"
+        android:textStyle="italic"
+        android:textColor="@color/primary_dark"
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:layout_below="@id/slide_desc4"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_tittle"
+        android:layout_below="@id/txt_dengan"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        />
+
+
+    <TextView
+        android:id="@+id/txt_baper1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="-- ASTA --"
+        android:textStyle="italic"
+        android:textColor="#FFF"
+        android:textSize="28sp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:layout_below="@id/txt_dengan"
+        android:layout_marginTop="10dp"
+        />
+
+
+
+
+</RelativeLayout>

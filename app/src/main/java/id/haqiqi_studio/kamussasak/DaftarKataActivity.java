@@ -24,6 +24,7 @@ public class DaftarKataActivity extends AppCompatActivity implements NavigationV
     Spinner translation;
     DrawerLayout drawer;
     NavigationView navigationView;
+    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class DaftarKataActivity extends AppCompatActivity implements NavigationV
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Daftar Kata");
         setSupportActionBar(toolbar);
+       txt = findViewById(R.id.txtMeaning);
 
         mydb = new DBHelper(getApplicationContext());
 
@@ -66,7 +68,7 @@ public class DaftarKataActivity extends AppCompatActivity implements NavigationV
     }
 
     void showData() {
-        list.setAdapter(mydb.getAllWords(getApplicationContext()));
+        list.setAdapter(mydb.getAllWordsForList(getApplicationContext(), txt));
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
     }
