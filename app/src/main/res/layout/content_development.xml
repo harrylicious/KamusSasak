@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="id.haqiqi_studio.kamussasak.DevelopmentActivity"
+    tools:showIn="@layout/activity_development">
+
+  <android.support.v7.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:padding="5dp"
+      app:cardElevation="3dp"
+      app:cardCornerRadius="5dp">
+      <EditText
+          android:id="@+id/txtWord"
+          android:background="@drawable/custom_edittext"
+          android:padding="5dp"
+          android:layout_margin="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="WORD"/>
+  </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="5dp">
+        <EditText
+            android:id="@+id/txtMeaning"
+            android:background="@drawable/custom_edittext"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="MEANING"/>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="5dp">
+        <EditText
+            android:id="@+id/txtForm"
+            android:background="@drawable/custom_edittext"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="FORM"/>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
