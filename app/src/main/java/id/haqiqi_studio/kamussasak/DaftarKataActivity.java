@@ -17,14 +17,18 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
+import id.haqiqi_studio.kamussasak.*;
+
 public class DaftarKataActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ListView list;
     DBHelper mydb;
     Toolbar toolbar;
-    Spinner translation;
+    TextView translation;
     DrawerLayout drawer;
     NavigationView navigationView;
-    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,29 +37,18 @@ public class DaftarKataActivity extends AppCompatActivity implements NavigationV
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Daftar Kata");
         setSupportActionBar(toolbar);
-       txt = findViewById(R.id.txtMeaning);
 
         mydb = new DBHelper(getApplicationContext());
 
         init();
         showData();
 
-        translation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-              /*  if (translation.getSelectedItemPosition() == 0) {
-                    translation.setAdapter(mydb.chooseTransltation(getApplicationContext(), "meaning"));
-                }
-                else {
-                    translation.setAdapter(mydb.chooseTransltation(getApplicationContext(), "word"));
-                }*/
-            }
+        AdView adView = (AdView) findViewById(R.id.adView2);
+        AdRequest adRequest = new AdRequest.Builder()
+                .setRequestAgent("android_studio:ad_template").build();
+        adView.loadAd(adRequest);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,7 +61,7 @@ public class DaftarKataActivity extends AppCompatActivity implements NavigationV
     }
 
     void showData() {
-        list.setAdapter(mydb.getAllWordsForList(getApplicationContext(), txt));
+        list.setAdapter(mydb.getAllWordsForList(getApplicationContext()));
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
     }

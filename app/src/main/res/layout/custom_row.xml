@@ -50,11 +50,11 @@
             android:id="@+id/row_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00:00"
+            android:text="-"
             android:textSize="22sp"
             android:fontFamily="@font/roboto_regular"
             android:textAppearance="?android:attr/textAppearanceButton"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
     </LinearLayout>

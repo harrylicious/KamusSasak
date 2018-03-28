@@ -6,7 +6,7 @@ android {
         applicationId "id.haqiqi_studio.kamussasak"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

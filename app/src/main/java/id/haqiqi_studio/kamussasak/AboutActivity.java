@@ -64,7 +64,7 @@ public class AboutActivity extends AppCompatActivity implements NavigationView.O
     void share() {
         Intent i = new Intent();
         i.setAction(Intent.ACTION_SEND);
-        i.putExtra(Intent.EXTRA_TEXT, tentang.getText().toString() + "\n\n dan Yuks buruan download Kamus Sasak disini: " + "https://play.google.com/store/apps/details?id=haqiqi_studio.kancantastreamingapp");
+        i.putExtra(Intent.EXTRA_TEXT, tentang.getText().toString() + "\n\n dan Yuks buruan download Kamus Sasak disini: " + getString(R.string.share_link));
         i.setType("text/plain");
         startActivity(Intent.createChooser(i, "Bagikan Ke:"));
     }
@@ -91,11 +91,13 @@ public class AboutActivity extends AppCompatActivity implements NavigationView.O
         if (id == R.id.nav_home) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         } else if (id == R.id.nav_develop) {
-
+            startActivity(new Intent(getApplicationContext(), DevelopmentActivity.class));
+        } else if (id == R.id.nav_list) {
+            startActivity(new Intent(getApplicationContext(), DaftarKataActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(getApplicationContext(), AboutActivity.class));
         } else if (id == R.id.nav_share) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            share();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

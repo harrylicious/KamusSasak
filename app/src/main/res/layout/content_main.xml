@@ -13,67 +13,71 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:padding="3dp">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:gravity="center"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="5dp"
-            android:padding="5dp"
+            android:layout_margin="5dp"
             android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="2"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp">
+
             <RelativeLayout
-                android:layout_margin="3dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp">
+
                 <EditText
                     android:id="@+id/txtSearch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:inputType="textAutoComplete"
-                    android:padding="10dp"
+                    android:background="@drawable/custom_edittext"
                     android:hint="@string/indo"
-                    android:background="@drawable/custom_edittext" />
+                    android:inputType="textAutoComplete"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true" />
 
 
                 <ImageView
                     android:id="@+id/imgClear"
-                    android:layout_alignTop="@id/txtSearch"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/txtSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/txtSearch"
+                    android:layout_below="@id/txtSearch"
                     android:padding="10dp"
-                    android:tint="@color/colorPrimaryDark"
-                    android:src="@drawable/ic_clear"/>
+                    android:src="@drawable/ic_clear"
+                    android:tint="@color/colorPrimaryDark" />
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
         <ListView
             android:id="@+id/list"
-            android:background="@drawable/custom_linear"
-            android:visibility="invisible"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_linear"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/main_card"
+            android:layout_marginTop="150dp"
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
 
             <android.support.v7.widget.CardView
                android:clickable="true"
@@ -110,8 +114,8 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/circlebg_gray"
-                        android:src="@drawable/logo"
-                        android:padding="25dp"/>
+                        android:padding="25dp"
+                        android:src="@drawable/logo" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

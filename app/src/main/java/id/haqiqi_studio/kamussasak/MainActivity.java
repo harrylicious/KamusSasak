@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ArrayList<DataModel> dataModels;
     AnimationClasses anim;
+    AdUtils click = new AdUtils();
     ListView list;
     ImageView imageView;
     DBHelper mydb;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.indo_sasak);
         setSupportActionBar(toolbar);
+
 
         AdView adView = (AdView) findViewById(R.id.adView1);
         AdRequest adRequest = new AdRequest.Builder()
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               share();
+                share();
             }
         });
 
@@ -118,6 +120,12 @@ public class MainActivity extends AppCompatActivity
         dataModels = new ArrayList<>();
 
         mydb = new DBHelper(getApplicationContext());
+
+        if (mydb.getCount() <= 0) {
+            Toast.makeText(getApplicationContext(), "I'm Running.", Toast.LENGTH_SHORT).show();
+            mydb.truncateWord();
+            saveAll();
+        }
 
         list.setAdapter(mydb.getAllWords(getApplicationContext()));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -149,7 +157,7 @@ public class MainActivity extends AppCompatActivity
     void share() {
         Intent i = new Intent();
         i.setAction(Intent.ACTION_SEND);
-        i.putExtra(Intent.EXTRA_TEXT, "Yuks buruan download Kamus Sasak disini: " + "https://play.google.com/store/apps/details?id=haqiqi_studio.kancantastreamingapp");
+        i.putExtra(Intent.EXTRA_TEXT, "Yuks buruan download Kamus Sasak disini: "  + getString(R.string.share_link));
         i.setType("text/plain");
         startActivity(Intent.createChooser(i, "Bagikan Ke:"));
     }
@@ -165,6 +173,252 @@ public class MainActivity extends AppCompatActivity
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+    //region Bulk Insert
+    void saveAll() {
+        mydb.bulkInsert("Alan", "Permisi", "");
+        mydb.bulkInsert("Nurgehe", "Permisi", "");
+        mydb.bulkInsert("Alas cokor", "Sendal", "");
+        mydb.bulkInsert("Ampure", "Maaf", "");
+        mydb.bulkInsert("Ampurayan", "Muda", "");
+        mydb.bulkInsert("Anom", "Muda", "");
+        mydb.bulkInsert("Antos", "Tunggu", "");
+        mydb.bulkInsert("Antuk", "Oleh", "");
+        mydb.bulkInsert("Arep", "Depan/mau", "");
+        mydb.bulkInsert("Aturang", "Berikan", "");
+        mydb.bulkInsert("Awinan", "Sebabnya", "");
+        mydb.bulkInsert("Base krame", "Budibahasa", "");
+        mydb.bulkInsert("Basen", "Perkataan", "");
+        mydb.bulkInsert("Bebaos", "Sedang Bicara", "");
+        mydb.bulkInsert("Bejangkep", "Menikah", "");
+        mydb.bulkInsert("Bejeneng", "Berupa", "");
+        mydb.bulkInsert("Bekarye", "Bekerja,pesta  (begawe)", "");
+        mydb.bulkInsert("Bekesedi", "Buang air besar", "");
+        mydb.bulkInsert("Belamak", "Bertikar", "");
+        mydb.bulkInsert("Belemer", "Buang air kecil", "");
+        mydb.bulkInsert("Beparas", "Bercukur", "");
+        mydb.bulkInsert("Besermin", "Menangis", "");
+        mydb.bulkInsert("Bijesanak", "Sanak Saudara", "");
+        mydb.bulkInsert("Bije", "Anak", "");
+        mydb.bulkInsert("Bini", "Perempuan", "");
+        mydb.bulkInsert("Bosang", "Perut", "");
+        mydb.bulkInsert("Calung", "Kacamata", "");
+        mydb.bulkInsert("Cokor", "Kaki", "");
+        mydb.bulkInsert("Dane", "Tuan", "");
+        mydb.bulkInsert("Dastar", "Sapuk", "");
+        mydb.bulkInsert("Dine", "Hari", "");
+        mydb.bulkInsert("Doe", "Milik", "");
+        mydb.bulkInsert("Doeang", "Yang memiliki", "");
+        mydb.bulkInsert("Dumeteng", "Kepada", "");
+        mydb.bulkInsert("Empu", "Ibu Jari", "");
+        mydb.bulkInsert("Gading", "Tangan", "");
+        mydb.bulkInsert("Gadingan", "Ambil", "");
+        mydb.bulkInsert("Gedeng", "Rumah", "");
+        mydb.bulkInsert("Hendaweganpisan", "Mohon Kiranya", "");
+        mydb.bulkInsert("ican", "Beri", "");
+        mydb.bulkInsert("ican", "Kasih", "");
+        mydb.bulkInsert("Icanin", "Berikan", "");
+
+        mydb.bulkInsert("Iling", "Ingat", "");
+        mydb.bulkInsert("Imbuhan", "Tambahan", "");
+        mydb.bulkInsert("Inggih", "Ya", "");
+        mydb.bulkInsert("Iring", "Ikut", "");
+        mydb.bulkInsert("Jangantade", "Lauk Pau", "");
+        mydb.bulkInsert("Darang", "Lauk Pau", "");
+        mydb.bulkInsert("Jate", "Rambut", "");
+        mydb.bulkInsert("Jeneng", "Rupa", "");
+        mydb.bulkInsert("Kainulung", "Kain Hitam", "");
+        mydb.bulkInsert("Kakiq", "Kakek", "");
+        mydb.bulkInsert("Kalihkayun", "Tersinggung", "");
+        mydb.bulkInsert("Kampuh", "Selimut", "");
+        mydb.bulkInsert("Kapetek", "Dikuburkan", "");
+        mydb.bulkInsert("Karne", "Telinga", "");
+        mydb.bulkInsert("Kayun", "Suka", "");
+        mydb.bulkInsert("Suke", "Suka", "");
+        mydb.bulkInsert("Kekirangan", "Kekurangan", "");
+        mydb.bulkInsert("Kemos", "Tersenyum", "");
+        mydb.bulkInsert("Kepanggih", "Bertemu", "");
+        mydb.bulkInsert("Kepaten", "Kematian", "");
+        mydb.bulkInsert("Kesengan", "Disuruh", "");
+        mydb.bulkInsert("Kiat", "Tertawa", "");
+        mydb.bulkInsert("Kinyam", "Sehat", "");
+        mydb.bulkInsert("Kiwe", "Kiri", "");
+        mydb.bulkInsert("Kuace", "Baju", "");
+        mydb.bulkInsert("Kiwe", "Kiri", "");
+        mydb.bulkInsert("Kiwe", "Kiri", "");
+        mydb.bulkInsert("Kiwe", "Kiri", "");
+
+        mydb.bulkInsert("Kuri", "Gerbang", "");
+        mydb.bulkInsert("Laki", "Lelaki", "");
+        mydb.bulkInsert("Lamak", "Tikar", "");
+        mydb.bulkInsert("Lanjaran", "Rokok", "");
+        mydb.bulkInsert("Lati", "Lidah", "");
+        mydb.bulkInsert("Layah", "Lidah", "");
+        mydb.bulkInsert("Layon", "Mayit", "");
+        mydb.bulkInsert("Lingsir", "Tua", "");
+        mydb.bulkInsert("Luaran", "Selesai", "");
+        mydb.bulkInsert("Lumbar", "Pergi", "");
+        mydb.bulkInsert("Margi", "Pergi", "");
+        mydb.bulkInsert("Malih", "Lagi", "");
+        mydb.bulkInsert("Mangkin", "Sekarang", "");
+        mydb.bulkInsert("Mantuk", "Pulang", "");
+        mydb.bulkInsert("Maring", "Kepada", "");
+        mydb.bulkInsert("Maturpewikan", "Permakluman", "");
+        mydb.bulkInsert("Matur", "Memberitahu", "");
+        mydb.bulkInsert("Mawinan", "Olehsebab", "");
+        mydb.bulkInsert("Mecacap", "Bekeja", "");
+        mydb.bulkInsert("Mecunduk", "Bertemu", "");
+        mydb.bulkInsert("Medahar", "Makan", "");
+        mydb.bulkInsert("Majengan", "Makan", "");
+        mydb.bulkInsert("Nade", "Makan", "");
+        mydb.bulkInsert("Medahar", "Makan", "");
+
+
+        mydb.bulkInsert("Meke", "Becermin", "");
+        mydb.bulkInsert("Melinggih", "Duduk", "");
+        mydb.bulkInsert("Melungguh", "Duduk", "");
+        mydb.bulkInsert("Memaos", "Membicarakan", "");
+        mydb.bulkInsert("Menawi", "Barangkali", "");
+        mydb.bulkInsert("Meneng", "Diam", "");
+        mydb.bulkInsert("Mengedengin", "Mendengarkan", "");
+        mydb.bulkInsert("Menggah", "Marah", "");
+        mydb.bulkInsert("Duka", "Marah", "");
+        mydb.bulkInsert("Mensare", "Tidur", "");
+        mydb.bulkInsert("Mentangi", "Bangun Tidur", "");
+        mydb.bulkInsert("Merangkat", "Menikah", "");
+        mydb.bulkInsert("Mejangkep", "Menikah", "");
+        mydb.bulkInsert("Merengu", "Mendengarkan", "");
+        mydb.bulkInsert("Mesingit", "Bersembunyi", "");
+        mydb.bulkInsert("Mesiram", "Mandi", "");
+        mydb.bulkInsert("Metaken", "Bertanya", "");
+        mydb.bulkInsert("Mulut", "Sungap", "");
+        mydb.bulkInsert("Munapaat", "Manfaat", "");
+        mydb.bulkInsert("Munggah", "Naik keatas berugak/sholat", "");
+        mydb.bulkInsert("Napi", "Apa", "");
+        mydb.bulkInsert("Nenten man", "Belum", "");
+        mydb.bulkInsert("Nenten/Boten", "Tidak", "");
+        mydb.bulkInsert("Boten", "Tidak", "");
+        mydb.bulkInsert("Ngadeg", "Berdiri", "");
+        mydb.bulkInsert("Ngandike", "Mengatakan", "");
+        mydb.bulkInsert("Ngantos", "Menunggu", "");
+        mydb.bulkInsert("Ngaturang", "Memberikan", "");
+        mydb.bulkInsert("Ngayahin", "Meladeni", "");
+        mydb.bulkInsert("Ngelanjar", "Merokok", "");
+        mydb.bulkInsert("Ngelunsur", "Meminta", "");
+        mydb.bulkInsert("Ngemban", "Pembawa Amanat", "");
+        mydb.bulkInsert("Ngeranjing", "Masuk", "");
+        mydb.bulkInsert("Ngerencanin", "Merepotkan", "");
+        mydb.bulkInsert("Ngewedang", "Merepotkan", "");
+        mydb.bulkInsert("Ngerencanin", "Minum kopi", "");
+        mydb.bulkInsert("Ngimbuh", "Tambah", "");
+        mydb.bulkInsert("Ngiring", "Mengikuti", "");
+        mydb.bulkInsert("Nike", "Itu", "");
+        mydb.bulkInsert("Niki", "Ini", "");
+        mydb.bulkInsert("Ninik", "Nenek", "");
+        mydb.bulkInsert("Nyaluq", "Nyusul", "");
+        mydb.bulkInsert("Nyandang", "Cukup", "");
+        mydb.bulkInsert("Nyedah", "Makan Daun Sirih", "");
+        mydb.bulkInsert("Nyupne", "Bermimpi", "");
+        mydb.bulkInsert("Oleman", "Undangan", "");
+
+
+        mydb.bulkInsert("Onang", "Berwenang", "");
+        mydb.bulkInsert("Pacetan", "Teman Ngopi", "");
+        mydb.bulkInsert("Pageran", "Gigi", "");
+        mydb.bulkInsert("Pamit", "Mohondiri", "");
+        mydb.bulkInsert("Pamitang", "Meminta", "");
+        mydb.bulkInsert("Pangartike", "Pengertian", "");
+        mydb.bulkInsert("Pangendike", "Ucapan", "");
+        mydb.bulkInsert("Paosan", "Bacaan", "");
+        mydb.bulkInsert("Parek", "Menemui", "");
+        mydb.bulkInsert("Pasengan", "Nama", "");
+        mydb.bulkInsert("Pecandangan", "Penginang", "");
+        mydb.bulkInsert("Pelabuan", "Tempat Daun Sirih", "");
+        mydb.bulkInsert("Pecawisan", "Pelocok Daun Sirih", "");
+        mydb.bulkInsert("Pejarupan", "Muka", "");
+        mydb.bulkInsert("Pekayunan", "Kemauan", "");
+        mydb.bulkInsert("Pelinggih Senamian", "Kalian semua", "");
+        mydb.bulkInsert("Pelinggih/pelungguh", "Anda", "");
+        mydb.bulkInsert("Pemaos", "Pembaca", "");
+        mydb.bulkInsert("Pendikayang", "Suruh", "");
+        mydb.bulkInsert("Penjenengan", "Saselepan (Keris)", "");
+        mydb.bulkInsert("Penyerminan", "Mata", "");
+        mydb.bulkInsert("Penyingakin", "Mata", "");
+        mydb.bulkInsert("Pepaosan", "Tempat Membaca", "");
+        mydb.bulkInsert("Peragayan", "Kemauan", "");
+        mydb.bulkInsert("Rage", "Tubuh", "");
+        mydb.bulkInsert("Pesarean", "Tempat Tidur", "");
+        mydb.bulkInsert("Petitis", "Kending", "");
+        mydb.bulkInsert("Puad", "Pusar", "");
+        mydb.bulkInsert("Pulihtuturan", "Dapatcerita", "");
+        mydb.bulkInsert("Pulih", "Dapat", "");
+        mydb.bulkInsert("Punggalan", "Leher", "");
+        mydb.bulkInsert("Jongge", "Leher", "");
+        mydb.bulkInsert("Pedek", "Leher", "");
+        mydb.bulkInsert("Pungkur", "Belakang/Dekat", "");
+        mydb.bulkInsert("Pungkuran", "Belakangan", "");
+        mydb.bulkInsert("Puput", "Selesai/Tamat", "");
+        mydb.bulkInsert("Puri", "Istana", "");
+        mydb.bulkInsert("Raris", "Lanjutkan", "");
+        mydb.bulkInsert("Gelis", "Cepat", "");
+        mydb.bulkInsert("Rawis", "Kumis/Jenggot", "");
+        mydb.bulkInsert("Rawuh", "Datang", "");
+        mydb.bulkInsert("Ring", "Di", "");
+        mydb.bulkInsert("Sakinghendi", "Darimana", "");
+        mydb.bulkInsert("Sampunnapi", "Bagaimana", "");
+        mydb.bulkInsert("Sampun", "Sudah/telah", "");
+        mydb.bulkInsert("Sampunang", "Tidakperlu/jangan", "");
+        mydb.bulkInsert("Sanak", "Saudara", "");
+        mydb.bulkInsert("Sareng(bareng)", "Dengan (bersama)", "");
+
+
+        mydb.bulkInsert("Sasih", "Bulan", "");
+        mydb.bulkInsert("Sebiniq/rabi", "Istri", "");
+        mydb.bulkInsert("Sedah/kinang", "Daunsirih", "");
+        mydb.bulkInsert("Sede/ninggal", "Meninggal", "");
+        mydb.bulkInsert("Selakiq", "Suami", "");
+        mydb.bulkInsert("Semugik", "Susu", "");
+        mydb.bulkInsert("Serminang", "Melihat", "");
+        mydb.bulkInsert("Silaq/daweg", "Ayo,mari", "");
+        mydb.bulkInsert("Simpang", "Mampir", "");
+        mydb.bulkInsert("Simpuh", "Bersila", "");
+        mydb.bulkInsert("Singit", "Sembunyi", "");
+        mydb.bulkInsert("Sipaq", "Pundak", "");
+        mydb.bulkInsert("Siratmaye", "Alis", "");
+        mydb.bulkInsert("Suar", "Lapar", "");
+        mydb.bulkInsert("Suargi/melekat", "Almarhum", "");
+        mydb.bulkInsert("Sumuran", "Hidung", "");
+        mydb.bulkInsert("Sungkan/serdeng", "Sakit", "");
+        mydb.bulkInsert("Tampek", "Kain", "");
+        mydb.bulkInsert("Tampi", "Menerima", "");
+        mydb.bulkInsert("Teantosin", "Ditungguin", "");
+        mydb.bulkInsert("Tebaosang", "Sedang dibicarakan", "");
+        mydb.bulkInsert("Tebaosin", "Dibicarakan", "");
+        mydb.bulkInsert("Tegamel/tegading", "Dipegang (dikuasai)", "");
+        mydb.bulkInsert("Temargiang", "Diberlakukan/ dilaksanakan", "");
+        mydb.bulkInsert("Tendes", "Kepala", "");
+        mydb.bulkInsert("Tendikayang", "Disuruh", "");
+        mydb.bulkInsert("Tengen", "Kanan", "");
+        mydb.bulkInsert("Teparekin", "Ditemui", "");
+        mydb.bulkInsert("Tepejeneng", "Dirupakan (dibentuk)", "");
+        mydb.bulkInsert("Tepetek", "Tekubur", "");
+        mydb.bulkInsert("Tertiptapsile", "Sopan Santun", "");
+        mydb.bulkInsert("Tiang/dewek", "Saya, aku", "");
+        mydb.bulkInsert("Tititate", "Aturan", "");
+        mydb.bulkInsert("Tunas", "Minta", "");
+        mydb.bulkInsert("Ulung", "Hitam", "");
+        mydb.bulkInsert("Upakcara", "Upacara", "");
+        mydb.bulkInsert("Urip", "Hidup", "");
+        mydb.bulkInsert("Utawi", "Atau", "");
+        mydb.bulkInsert("Wareg", "Kenyang", "");
+        mydb.bulkInsert("Warsa", "Warsa", "");
+        mydb.bulkInsert("Wenten", "Ada", "");
+        mydb.bulkInsert("Wonten", "Ada", "");
+        mydb.bulkInsert("Wikan", "Tahu", "");
+        mydb.bulkInsert("Wikanang", "Mengetahui", "");
+
+    }
+    //endregion
 
     //region Show Data
     void showData() {
@@ -269,6 +523,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_convert) {
+            txtSearch.setText("");
             if (txt.matches(getString(R.string.indo))) {
                 anim = new AnimationClasses();
                 anim.setAnimationHyperToObject(txtSearch, getApplicationContext());
@@ -298,13 +553,14 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         } else if (id == R.id.nav_develop) {
+            click.loadInterstitial(this, getString(R.string.interstitial_ad_unit_id));
             startActivity(new Intent(getApplicationContext(), DevelopmentActivity.class));
         } else if (id == R.id.nav_list) {
             startActivity(new Intent(getApplicationContext(), DaftarKataActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(getApplicationContext(), AboutActivity.class));
         } else if (id == R.id.nav_share) {
-           share();
+            share();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

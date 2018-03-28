@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 import id.haqiqi_studio.kamussasak.Model.DataModel;
 
-public class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends  SQLiteOpenHelper{
 
     public static final String DATABASE_NAME = "dictionary.db";
     public static final String TABLE_NAME = "word";
@@ -83,6 +83,16 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public void bulkInsert(String word, String meaning, String form) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("word", word);
+        contentValues.put("meaning", meaning);
+        contentValues.put("form", form);
+        contentValues.put("stat", "0");
+        db.insert(TABLE_NAME, null, contentValues);
+    }
+
     public boolean updateWord(Integer id, String word, String meaning, String form, String stat) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -126,8 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
       return adapter;
     }
 
-    public CustomAdapter getAllWordsForList(Context context, TextView v) {
-        v.setTextColor(v.getResources().getColor(R.color.black));
+    public CustomAdapter getAllWordsForList(Context context) {
         ArrayList<DataModel> dataModels = new ArrayList<>();
 
         db = this.getReadableDatabase();
@@ -135,7 +144,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cur.moveToFirst();
 
         while (cur.isAfterLast() == false) {
-            dataModels.add(new DataModel(cur.getString(cur.getColumnIndex(WORD_COLUMN_WORD)), cur.getString(cur.getColumnIndex(WORD_COLUMN_MEANING)), cur.getString(cur.getColumnIndex(WORD_COLUMN_FORM))));
+            dataModels.add(new DataModel("", cur.getString(cur.getColumnIndex(WORD_COLUMN_MEANING)), cur.getString(cur.getColumnIndex(WORD_COLUMN_WORD))));
             cur.moveToNext();
         }
         cur.close();
@@ -173,7 +182,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //hp = new HashMap();
         db = this.getReadableDatabase();
-        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + WORD_COLUMN_WORD + " LIKE '%" + txt + "%'";
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + WORD_COLUMN_MEANING + " LIKE '%" + txt + "%'";
         Cursor cur = db.rawQuery(sql, null);
 
         count = cur.getCount();
@@ -186,7 +195,7 @@ public class DBHelper extends SQLiteOpenHelper {
             cur.moveToFirst();
 
             while (cur.isAfterLast() == false) {
-                dataModels.add(new DataModel(cur.getString(cur.getColumnIndex(WORD_COLUMN_WORD)), cur.getString(cur.getColumnIndex(WORD_COLUMN_MEANING)), cur.getString(cur.getColumnIndex(WORD_COLUMN_FORM))));
+                dataModels.add(new DataModel("", cur.getString(cur.getColumnIndex(WORD_COLUMN_MEANING)), cur.getString(cur.getColumnIndex(WORD_COLUMN_WORD))));
                 cur.moveToNext();
             }
         }
@@ -203,7 +212,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //hp = new HashMap();
         db = this.getReadableDatabase();
-        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + WORD_COLUMN_MEANING + " LIKE '%" + txt + "%'";
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + WORD_COLUMN_WORD + " LIKE '%" + txt + "%'";
         Cursor cur = db.rawQuery(sql, null);
 
         count = cur.getCount();
@@ -216,7 +225,7 @@ public class DBHelper extends SQLiteOpenHelper {
             cur.moveToFirst();
 
             while (cur.isAfterLast() == false) {
-                dataModels.add(new DataModel(cur.getString(cur.getColumnIndex(WORD_COLUMN_MEANING)), cur.getString(cur.getColumnIndex(WORD_COLUMN_WORD)), cur.getString(cur.getColumnIndex(WORD_COLUMN_FORM))));
+                dataModels.add(new DataModel("", cur.getString(cur.getColumnIndex(WORD_COLUMN_WORD)), cur.getString(cur.getColumnIndex(WORD_COLUMN_MEANING))));
                 cur.moveToNext();
             }
         }

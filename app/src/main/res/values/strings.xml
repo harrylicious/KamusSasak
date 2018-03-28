@@ -14,13 +14,15 @@
     <string name="indo">Masukkan Kata</string>
     <string name="notfound">Tidak ditemukan!</string>
 
+    <string name="share_link">https://play.google.com/store/apps/details?id=id.haqiqi_studio.kamussasak</string>
+
     <string-array name="translations">
         <item>Indonesia-Sasak</item>
         <item>Sasak-Indonesia</item>
 
     </string-array>
 
-    <string name="start">Get Started</string>
+    <string name="start">JALANKAN</string>
     <string name="title_activity_about">Tentang</string>
     <string name="large_text">
         "<strong><b>Sekilas Tentang Sasak</b></strong>\n\n"
@@ -48,7 +50,15 @@
         "berarti secara '<i>letterlijk</i>' 'Satu-satunya Kelurusan', karena nama itu menjadi "
         "sumber hidup dan kehidupan suku yang mendiami pulau Lombok ini.\n\n"
 
-        "Sekian"
+        "Sekian dan semoga bermanfaat \n\n\n"
+
+        "<strong><b>Disupport Oleh : </b></strong>\n"
+        "<b>MAPAS</b> <i> (Mangun Pemuda Sasak)</i> \n\n"
+
+        "<strong><b>Dikembangkan oleh : </b></strong> \n"
+        "Harry Sunaryo \n\n"
+        "----------------------------------------------"
+
 
 
     </string>

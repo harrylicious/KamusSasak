@@ -14,18 +14,16 @@ import com.google.android.gms.ads.InterstitialAd;
 public class AdUtils {
     private InterstitialAd mInterstitialAd;
 
-    /*private InterstitialAd newInterstitialAd() {
-        InterstitialAd interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+    public InterstitialAd newInterstitialAd(Context context, String str) {
+        InterstitialAd interstitialAd = new InterstitialAd(context);
+        interstitialAd.setAdUnitId(str);
         interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-                mNextLevelButton.setEnabled(true);
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
-                mNextLevelButton.setEnabled(true);
             }
 
             @Override
@@ -35,9 +33,9 @@ public class AdUtils {
             }
         });
         return interstitialAd;
-    }*/
+    }
 
-    private void showInterstitial(Context context) {
+    public void showInterstitial(Context context) {
         // Show the ad if it's ready. Otherwise toast and reload the ad.
         if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
@@ -47,16 +45,23 @@ public class AdUtils {
         }
     }
 
-    private void loadInterstitial() {
+    public void loadInterstitial(Context context, String str) {
+        mInterstitialAd = newInterstitialAd(context, str);
         // Disable the next level button and load the ad.
         AdRequest adRequest = new AdRequest.Builder()
                 .setRequestAgent("android_studio:ad_template").build();
         mInterstitialAd.loadAd(adRequest);
+
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+
+        }
     }
 
-    private void goToNextLevel() {
+    public void goToNextLevel() {
         // Show the next level and reload the ad to prepare for the level after.
         //mInterstitialAd = newInterstitialAd();
-        loadInterstitial();
+        //loadInterstitial();
     }
 }

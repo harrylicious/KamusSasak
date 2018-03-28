@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCF3E8"
+    android:background="#FBE9E7"
     tools:context=".IntroAppActivity">
 
     <ImageView
         android:id="@+id/img1"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/todo"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         />
 
     <TextView
         android:id="@+id/slide_title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ASTA"
-        android:textColor="@color/primary_dark"
+        android:text="KAMUS SASAK"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24dp"
         android:textStyle="bold"
         android:gravity="center"
@@ -34,8 +34,8 @@
         android:id="@+id/slide_desc1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="( Assisten Kita )"
-        android:textColor="@color/accent"
+        android:text="( Belajar Sasak dengan Mudah )"
+        android:textColor="@color/colorPrimary"
         android:textSize="18dp"
         android:gravity="center"
         android:layout_below="@id/slide_title1"
