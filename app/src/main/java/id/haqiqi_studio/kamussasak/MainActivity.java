@@ -34,7 +34,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -67,10 +69,12 @@ public class MainActivity extends AppCompatActivity
         toolbar.setTitle(R.string.indo_sasak);
         setSupportActionBar(toolbar);
 
+        MobileAds.initialize(this, getString(R.string.banner1));
 
-        AdView adView = (AdView) findViewById(R.id.adView1);
-        AdRequest adRequest = new AdRequest.Builder()
-                .setRequestAgent("android_studio:ad_template").build();
+
+        AdView adView = (AdView) findViewById(R.id.ads1);
+
+        AdRequest adRequest = new AdRequest.Builder().setRequestAgent("android_studio:ad_template").build();
         adView.loadAd(adRequest);
 
         init();

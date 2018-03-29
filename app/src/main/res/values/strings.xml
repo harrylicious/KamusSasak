@@ -22,6 +22,12 @@
 
     </string-array>
 
+    <string name="banner1">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner2">ca-app-pub-6121010286485686/1643752106</string>
+    <string name="banner3">ca-app-pub-6121010286485686/8895556167</string>
+    <string name="banner4">ca-app-pub-6121010286485686/3451657792</string>
+    <string name="banner5">ca-app-pub-6121010286485686/9575526097</string>
+
     <string name="start">JALANKAN</string>
     <string name="title_activity_about">Tentang</string>
     <string name="large_text">

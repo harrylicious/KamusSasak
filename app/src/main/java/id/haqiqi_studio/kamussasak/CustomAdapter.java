@@ -26,7 +26,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
     private static class ViewHolder {
         TextView txtMeaning;
         TextView txtForm;
-        TextView txtVersion;
+        TextView txtWord;
         ImageView info;
     }
 
@@ -71,7 +71,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
             convertView = inflater.inflate(R.layout.custom_row, parent, false);
             viewHolder.txtMeaning = (TextView) convertView.findViewById(R.id.txtMeaning);
             viewHolder.txtForm = (TextView) convertView.findViewById(R.id.txtForm);
-            viewHolder.txtVersion = (TextView) convertView.findViewById(R.id.row_time);
+            viewHolder.txtWord = (TextView) convertView.findViewById(R.id.txtWord);
             viewHolder.info = (ImageView) convertView.findViewById(R.id.item_info);
 
             result=convertView;
@@ -88,7 +88,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
 
         viewHolder.txtMeaning.setText(dataModel.getMeaning());
         viewHolder.txtForm.setText(dataModel.getForm());
-        viewHolder.txtVersion.setText(dataModel.getWord());
+        viewHolder.txtWord.setText(dataModel.getWord());
         viewHolder.info.setOnClickListener(this);
         viewHolder.info.setTag(position);
         // Return the completed view to render on screen
