@@ -1,6 +1,6 @@
 ## Tuliskan Nama Kalian disini:
 
-1. 
+1. Fathuriadi
 2. 
 3.
 4.
