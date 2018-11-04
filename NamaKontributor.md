@@ -1,6 +1,6 @@
 ## Tuliskan Nama Kalian disini:
 
-1. Fathuriadi
+1. LALU ERWIN EDI HAMIDI 
 2. 
 3.
 4.
